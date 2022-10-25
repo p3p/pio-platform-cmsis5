@@ -1,0 +1,50 @@
+{
+  "name": "cmsis5",
+  "title": "CMSIS5",
+  "description": "CMSIS5",
+  "url": "http://www.nxp.com/products/microcontrollers/",
+  "homepage": "http://platformio.org/platforms/nxplpc",
+  "license": "Apache-2.0",
+  "engines": {
+    "platformio": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/p3p/pio-cmsis5.git"
+  },
+  "version": "0.0.1",
+  "packageRepositories": [
+    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+    "http://dl.platformio.org/packages/manifest.json"
+  ],
+  "frameworks": {
+    "arduino": {
+      "package": "framework-arduino-cmsis5",
+      "script": "builder/frameworks/arduino.py"
+    }
+  },
+  "packages": {
+    "framework-arduino-cmsis5": {
+      "type": "framework",
+      "version": "symlink:///home/p3p/workspace/framework-arduino-cmsis5"
+    },
+    "toolchain-gccarmnoneeabi": {
+      "type": "toolchain",
+      "version": ">=1.90000"
+    },
+    "tool-openocd": {
+      "type": "debugger",
+      "optional": true,
+      "version": "~1.1000.0"
+    },
+    "tool-pyocd": {
+      "type": "debugger",
+      "optional": true,
+      "version": "~0.801.0"
+    },
+    "tool-jlink": {
+      "type": "debugger",
+      "version": ">1.66000.0"
+    }
+  }
+}

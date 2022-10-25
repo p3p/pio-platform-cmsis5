@@ -1,0 +1,53 @@
+{
+  "build": {
+    "cpu": "cortex-m4",
+    "f_cpu": "120000000L",
+    "mcu": "lpc4078",
+    "core": "arduino",
+    "variant": "lpc4078"
+  },
+  "pack": {
+    "core": "CORE_M4",
+    "fp": "ENABLED",
+    "mcu_driver": "https://keilpack.azureedge.net/pack/Keil.LPC4000_DFP.2.1.0.pack",
+    "cmsis": "https://github.com/ARM-software/CMSIS_5/releases/download/5.9.0/ARM.CMSIS.5.9.0.pack"
+  },
+  "RTE_config_path": "RTE_Config/default",
+  "connectivity": [
+  ],
+  "debug": {
+    "jlink_device": "LPC4078",
+    "svd_path": "LPC408x_7x.svd",
+    "tools": {
+      "cmsis-dap": {
+        "onboard": true,
+        "server": {
+          "arguments": [
+            "pyocd-gdbserver.py",
+            "-t",
+            "lpc4078"
+          ],
+          "executable": "$PYTHONEXE",
+          "package": "tool-pyocd"
+        }
+      }
+    }
+  },
+  "frameworks": [
+    "arduino"
+  ],
+  "name": "NXP LPC4078",
+  "upload": {
+    "maximum_ram_size": 65536,
+    "maximum_size": 475136,
+    "protocol": "mbed",
+    "protocols": [
+      "jlink",
+      "blackmagic",
+      "cmsis-dap",
+      "mbed"
+    ]
+  },
+  "url": "https://www.nxp.com/docs/en/data-sheet/LPC408X_7X.pdf",
+  "vendor": "NXP"
+}

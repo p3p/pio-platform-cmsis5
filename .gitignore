@@ -1,0 +1,4 @@
+*.pyc
+.pio/
+__pycache__
+.pack/*
