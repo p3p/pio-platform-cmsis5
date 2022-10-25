@@ -2,15 +2,15 @@
   "name": "cmsis5",
   "title": "CMSIS5",
   "description": "CMSIS5",
-  "url": "http://www.nxp.com/products/microcontrollers/",
-  "homepage": "http://platformio.org/platforms/nxplpc",
+  "url": "",
+  "homepage": "",
   "license": "Apache-2.0",
   "engines": {
     "platformio": "^4.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/p3p/pio-cmsis5.git"
+    "url": "https://github.com/p3p/pio-platform-cmsis5.git"
   },
   "version": "0.0.1",
   "packageRepositories": [
@@ -26,7 +26,7 @@
   "packages": {
     "framework-arduino-cmsis5": {
       "type": "framework",
-      "version": "symlink:///home/p3p/workspace/framework-arduino-cmsis5"
+      "version": "https://github.com/p3p/pio-framework-arduino-cmsis5.git"
     },
     "toolchain-gccarmnoneeabi": {
       "type": "toolchain",

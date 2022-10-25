@@ -35,7 +35,7 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 
 platform_version  = str(int(''.join(['{0:0=3d}'.format(int(x)) for x in platform.version.split('.')]))) + 'UL'
-framework_version = str(int(''.join(['{0:0=3d}'.format(int(x)) for x in platform.get_package_version('framework-arduino-cmsis5').split('.')]))) + 'UL'
+#framework_version = str(int(''.join(['{0:0=3d}'.format(int(x)) for x in platform.get_package_version('framework-arduino-cmsis5').split('.')]))) + 'UL'
 
 if "BOARD" not in env:
     raise(Exception("No board in configuration"))
@@ -168,6 +168,7 @@ env.Append(
     CPPDEFINES={
         "lpc1768" : ["LPC175x_6x"],
         "lpc1769" : ["LPC175x_6x"],
+        "lpc4078" : [],
     }[board.get("build.mcu")]
 )
 
@@ -182,7 +183,7 @@ cmsis_driver_include = join(cmsis5_extract_loc, "CMSIS/Driver/Include")
 
 cmsis_device_include = join(cmsis5_extract_loc, "Device/ARM/{}/Include".format(arch))
 cmsis_device_asm = join(cmsis5_extract_loc, "Device/ARM/{}/Source/GCC".format(arch))
-cmsis_device_link_script = join(cmsis_platform_path, "system/{}/gcc_arm.ld".format(board.get("build.mcu")))
+cmsis_device_link_script = join(cmsis_platform_path, "system/{}/gcc_arm.ld".format(board.get("pack.startup_src")))
 
 if env.get("LDSCRIPT_PATH") == None:
     env.Replace(LDSCRIPT_PATH=cmsis_device_link_script)
@@ -200,7 +201,7 @@ env.Append(
 
 # TODO: these source files can only be build if the feature is enabled, plus other conflicts
 env.BuildSources(join("$BUILD_DIR", "FrameworkCMSIS", "driver"), keil_pack_extract_loc, "-<*> +<RTE_Driver/{}.c> -<RTE_Driver/CAN*.c> -<RTE_Driver/USBH*.c> -<RTE_Driver/EMAC*.c> -<RTE_Driver/SPI*.c>".format(driver_filter))
-env.BuildSources(join("$BUILD_DIR", "FrameworkCMSIS", "core"), join(cmsis_platform_path, ""), "-<*> +<system/{}/src/*.c>".format(board.get("build.mcu")))
+env.BuildSources(join("$BUILD_DIR", "FrameworkCMSIS", "core"), join(cmsis_platform_path, ""), "-<*> +<system/{}/src/*.c>".format(board.get("pack.startup_src")))
 
 #
 # Target: Build executable and linkable firmware

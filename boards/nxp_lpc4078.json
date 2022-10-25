@@ -7,10 +7,10 @@
     "variant": "lpc4078"
   },
   "pack": {
-    "core": "CORE_M4",
     "fp": "ENABLED",
     "mcu_driver": "https://keilpack.azureedge.net/pack/Keil.LPC4000_DFP.2.1.0.pack",
-    "cmsis": "https://github.com/ARM-software/CMSIS_5/releases/download/5.9.0/ARM.CMSIS.5.9.0.pack"
+    "cmsis": "https://github.com/ARM-software/CMSIS_5/releases/download/5.9.0/ARM.CMSIS.5.9.0.pack",
+    "startup_src": "default/lpc4000"
   },
   "RTE_config_path": "RTE_Config/default",
   "connectivity": [
